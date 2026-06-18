@@ -49,3 +49,4 @@ next-env.d.ts
 /public/images/Recrutari Spring 26/
 
 .mcp.json
+.playwright-mcp/
