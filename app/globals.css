@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   BEST Chișinău — "Streamtime" design tokens (DESIGN.md)
+   Tailwind v4, CSS-first. Light/paper only (no dark mode).
+   shadcn semantic tokens are remapped onto the brand palette.
+   ============================================================ */
+
+@theme {
+  /* ---- Brand colors ---- */
+  --color-paper: #f3f1ed; /* page background — warm muted surface */
+  --color-surface: #ffffff; /* white panels / signatures */
+  --color-ink: #000000; /* primary type */
+  --color-charcoal: #2f2c29; /* dark fills / plates / primary button */
+  --color-sun: #ffde3b; /* sunflower accent — used sparingly */
+  --color-line: #ded9d0; /* warm hairline */
+  --color-error: #d92d20;
+  --color-success: #2ead4a;
+
+  /* ---- Brand radii ---- (pill for controls/chips, 8px cards) */
+  --radius-card: 8px;
+  --radius-pill: 160px;
+
+  /* ---- Easing tokens (mirrored in lib/motion.ts for GSAP) ---- */
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* next/font variables resolve at runtime on <html>, so map them inline.
+   shadcn semantic color + radius tokens are mapped here too. */
+@theme inline {
+  --font-display: var(--font-clash);
+  --font-heading: var(--font-clash);
+  --font-sans: var(--font-general);
+  --font-mono: var(--font-geist-mono);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* shadcn semantic tokens, mapped to the Streamtime brand (light only) */
+:root {
+  color-scheme: light;
+  --radius: 0.5rem; /* 8px → rounded-lg matches DESIGN card radius */
+
+  --background: #f3f1ed; /* paper */
+  --foreground: #0a0a0a; /* ink */
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #2f2c29; /* charcoal fill */
+  --primary-foreground: #ffffff;
+  --secondary: #e9e6df;
+  --secondary-foreground: #2f2c29;
+  --muted: #ece9e2;
+  --muted-foreground: #6b6660;
+  --accent: #e9e6df;
+  --accent-foreground: #2f2c29;
+  --destructive: #d92d20;
+  --border: #ded9d0;
+  --input: #ded9d0;
+  --ring: #2f2c29;
+}
+
+html {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-general), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+/* Display type defaults: tight tracking per DESIGN.md */
+.font-display {
+  letter-spacing: -0.03em;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================================
+   Reveal gating — SSR / no-JS safe.
+   Content is VISIBLE by default. It is hidden ONLY once the
+   inline head script confirms JS is on AND motion is allowed.
+   Reduced-motion (html.rm) and no-JS never hide anything.
+   ============================================================ */
+html.js:not(.rm) [data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+html.js:not(.rm) [data-reveal="up"] {
+  transform: translateY(2rem);
+}
+/* Masked "letterpress set": parent clips; GSAP owns the inner transform.
+   (A CSS transform here fought GSAP's yPercent tween and left it stuck.) */
+html.js:not(.rm) [data-mask] {
+  overflow: hidden;
+}
+html.js:not(.rm) [data-mask] > [data-mask-inner] {
+  will-change: transform;
+}
+/* Photo "develop": blurred + clipped until ScrollTrigger develops it */
+html.js:not(.rm) [data-develop] {
+  clip-path: inset(0 0 100% 0);
+  filter: blur(18px);
+  transform: scale(1.06);
+  will-change: clip-path, filter, transform;
+}
+/* Hero masthead "2007": solid copy hidden (fills up on scrub), underline collapsed */
+html.js:not(.rm) [data-year-fill] {
+  clip-path: inset(100% 0 0 0);
+}
+html.js:not(.rm) [data-year-underline] {
+  transform: scaleX(0);
+}
+
+/* ============================================================
+   Custom cursor — hide native cursor only with a fine pointer
+   and only while the custom cursor is active.
+   ============================================================ */
+@media (pointer: fine) {
+  html.js.cursor-active,
+  html.js.cursor-active a,
+  html.js.cursor-active button,
+  html.js.cursor-active [data-cursor] {
+    cursor: none;
+  }
+}
+
+/* Utility: hide scrollbars on horizontal strips */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   Reduced motion — show final states, kill transitions.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
