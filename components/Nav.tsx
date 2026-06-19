@@ -94,11 +94,17 @@ export function Nav() {
         <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:h-20 md:px-10">
           <button
             onClick={() => go("#hero")}
-            className="font-display text-lg font-semibold tracking-tight text-ink"
+            className={`font-display text-lg font-semibold tracking-tight transition-colors ${
+              solid ? "text-ink" : "text-paper"
+            }`}
           >
             {SITE.wordmark}
             <span className="text-sun">.</span>
-            <span className="ml-1 hidden font-sans text-sm font-normal text-ink/55 sm:inline">
+            <span
+              className={`ml-1 hidden font-sans text-sm font-normal sm:inline ${
+                solid ? "text-ink/55" : "text-paper/70"
+              }`}
+            >
               Chișinău
             </span>
           </button>
@@ -109,7 +115,13 @@ export function Nav() {
                 key={link.href}
                 onClick={() => go(link.href)}
                 className={`relative font-sans text-sm tracking-tight transition-colors ${
-                  active === link.href.slice(1) ? "text-ink" : "text-ink/55 hover:text-ink"
+                  active === link.href.slice(1)
+                    ? solid
+                      ? "text-ink"
+                      : "text-paper"
+                    : solid
+                      ? "text-ink/55 hover:text-ink"
+                      : "text-paper/70 hover:text-paper"
                 }`}
               >
                 {link.label}
@@ -136,11 +148,11 @@ export function Nav() {
             className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
           >
             <span
-              className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`}
+              className={`h-0.5 w-6 ${open || !solid ? "bg-paper" : "bg-ink"} transition-transform duration-300 ${open ? "translate-y-2 rotate-45" : ""}`}
             />
-            <span className={`h-0.5 w-6 bg-ink transition-opacity duration-200 ${open ? "opacity-0" : ""}`} />
+            <span className={`h-0.5 w-6 ${open || !solid ? "bg-paper" : "bg-ink"} transition-opacity duration-200 ${open ? "opacity-0" : ""}`} />
             <span
-              className={`h-0.5 w-6 bg-ink transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`}
+              className={`h-0.5 w-6 ${open || !solid ? "bg-paper" : "bg-ink"} transition-transform duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`}
             />
           </button>
         </nav>
