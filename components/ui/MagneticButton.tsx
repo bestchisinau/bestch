@@ -53,8 +53,12 @@ export function MagneticButton({
       const lx = gsap.quickTo(lbl, "x", { duration: 0.6, ease: "power3" });
       const ly = gsap.quickTo(lbl, "y", { duration: 0.6, ease: "power3" });
 
+      // Measure the button's resting rect once on enter instead of on every
+      // pointermove — reading layout per move thrashes and competes with scroll.
+      let rect: DOMRect | null = null;
+
       const move = (e: PointerEvent) => {
-        const r = el.getBoundingClientRect();
+        const r = rect ?? (rect = el.getBoundingClientRect());
         const relX = e.clientX - (r.left + r.width / 2);
         const relY = e.clientY - (r.top + r.height / 2);
         xTo(relX * strength);
@@ -64,10 +68,10 @@ export function MagneticButton({
       };
 
       const enter = (e: PointerEvent) => {
+        rect = el.getBoundingClientRect();
         if (ov && fill) {
-          const r = el.getBoundingClientRect();
-          const px = ((e.clientX - r.left) / r.width) * 100;
-          const py = ((e.clientY - r.top) / r.height) * 100;
+          const px = ((e.clientX - rect.left) / rect.width) * 100;
+          const py = ((e.clientY - rect.top) / rect.height) * 100;
           gsap.set(ov, { clipPath: `circle(0% at ${px}% ${py}%)` });
           gsap.to(ov, { clipPath: `circle(141% at ${px}% ${py}%)`, duration: 0.55, ease: "expo.out" });
         }
@@ -79,11 +83,12 @@ export function MagneticButton({
         lx(0);
         ly(0);
         if (ov && fill) {
-          const r = el.getBoundingClientRect();
+          const r = rect ?? el.getBoundingClientRect();
           const px = ((e.clientX - r.left) / r.width) * 100;
           const py = ((e.clientY - r.top) / r.height) * 100;
           gsap.to(ov, { clipPath: `circle(0% at ${px}% ${py}%)`, duration: 0.45, ease: "power3" });
         }
+        rect = null;
       };
 
       el.addEventListener("pointermove", move);
@@ -111,7 +116,7 @@ export function MagneticButton({
         <span
           ref={overlay}
           aria-hidden
-          className="absolute inset-0 z-20 flex items-center justify-center bg-sun text-ink"
+          className="absolute inset-0 z-20 flex items-center justify-center bg-sun text-surface"
           style={{ clipPath: "circle(0% at 50% 50%)" }}
         >
           <span className="inline-flex items-center gap-2">{children}</span>

@@ -94,7 +94,6 @@ export function Nav() {
         <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:h-20 md:px-10">
           <button
             onClick={() => go("#hero")}
-            data-cursor="TOP"
             className="font-display text-lg font-semibold tracking-tight text-ink"
           >
             {SITE.wordmark}
@@ -123,7 +122,6 @@ export function Nav() {
             ))}
             <a
               href={APPLY_URL}
-              data-cursor="JOIN"
               className="rounded-pill bg-charcoal px-5 py-2.5 font-sans text-sm font-medium text-surface transition-colors hover:bg-charcoal/90"
             >
               Apply now
@@ -168,7 +166,7 @@ export function Nav() {
           data-menu-item
           href={APPLY_URL}
           onClick={() => setOpen(false)}
-          className="mt-6 inline-flex w-fit rounded-pill bg-sun px-8 py-4 font-sans text-lg font-medium text-ink"
+          className="mt-6 inline-flex w-fit rounded-pill bg-sun px-8 py-4 font-sans text-lg font-medium text-surface"
         >
           Apply now
         </a>

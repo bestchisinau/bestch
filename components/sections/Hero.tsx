@@ -37,7 +37,18 @@ export function Hero() {
         gsap.fromTo(
           photo.current,
           { clipPath: "inset(0 0 100% 0)", filter: "blur(18px)", scale: 1.06 },
-          { clipPath: "inset(0 0 0% 0)", filter: "blur(0px)", scale: 1, duration: 1.1, ease: EASE.enter, delay: 0.15 },
+          {
+            clipPath: "inset(0 0 0% 0)",
+            filter: "blur(0px)",
+            scale: 1,
+            duration: 1.1,
+            ease: EASE.enter,
+            delay: 0.15,
+            onStart: () => gsap.set(photo.current, { willChange: "clip-path, filter, transform" }),
+            // The full-bleed sticky image stays on screen the whole scroll —
+            // release its filter/clip layers so it isn't a permanent GPU layer.
+            onComplete: () => gsap.set(photo.current, { clipPath: "none", filter: "none", willChange: "auto" }),
+          },
         ),
         gsap.fromTo(
           reveals,
@@ -108,7 +119,6 @@ export function Hero() {
           <MagneticButton
             href={APPLY_URL}
             size="pill-lg"
-            cursorLabel="JOIN"
             fill
             className="bg-surface text-ink hover:bg-surface"
           >

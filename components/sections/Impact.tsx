@@ -80,7 +80,7 @@ export function Impact() {
                 <div
                   key={stat.label}
                   className={`flex flex-col gap-3 p-6 md:p-8 ${
-                    stat.accent ? "bg-sun text-ink" : "bg-charcoal text-paper"
+                    stat.accent ? "bg-sun text-surface" : "bg-charcoal text-paper"
                   }`}
                 >
                   <span

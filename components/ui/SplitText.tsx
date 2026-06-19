@@ -46,7 +46,7 @@ export function SplitText({
                 >
                   <span data-mask-inner className="inline-block">
                     {isAccent ? (
-                      <mark className="bg-sun px-[0.08em] text-ink">{word}</mark>
+                      <mark className="bg-sun px-[0.08em] text-surface">{word}</mark>
                     ) : (
                       word
                     )}

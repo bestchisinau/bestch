@@ -101,7 +101,7 @@ export function Activities() {
                 <span className="hidden max-w-[18rem] text-right text-sm text-ink/55 lg:block">
                   {a.blurb.split(". ")[0]}.
                 </span>
-                <span className="whitespace-nowrap rounded-pill bg-sun px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-ink">
+                <span className="whitespace-nowrap rounded-pill bg-sun px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-surface">
                   {a.chip}
                 </span>
               </span>

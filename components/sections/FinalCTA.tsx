@@ -30,7 +30,7 @@ export function FinalCTA() {
           {FINAL_CTA.body}
         </p>
         <div data-reveal className="mt-10 flex flex-col items-center gap-5 sm:flex-row">
-          <MagneticButton href={APPLY_URL} variant="onDark" size="pill-lg" cursorLabel="JOIN" fill>
+          <MagneticButton href={APPLY_URL} variant="onDark" size="pill-lg" fill>
             {FINAL_CTA.button}
           </MagneticButton>
           <a

@@ -16,7 +16,7 @@
   --color-surface: #ffffff; /* white panels / signatures */
   --color-ink: #000000; /* primary type */
   --color-charcoal: #2f2c29; /* dark fills / plates / primary button */
-  --color-sun: #ffde3b; /* sunflower accent — used sparingly */
+  --color-sun: #c61700; /* brand accent (red) — used sparingly */
   --color-line: #ded9d0; /* warm hairline */
   --color-error: #d92d20;
   --color-success: #2ead4a;
@@ -122,9 +122,11 @@ body {
    inline head script confirms JS is on AND motion is allowed.
    Reduced-motion (html.rm) and no-JS never hide anything.
    ============================================================ */
+/* `will-change` is applied transiently by GSAP only while each element is
+   animating (and cleared on complete), so no permanent compositor layers
+   pile up — that was a source of progressive scroll lag. */
 html.js:not(.rm) [data-reveal] {
   opacity: 0;
-  will-change: opacity, transform;
 }
 html.js:not(.rm) [data-reveal="up"] {
   transform: translateY(2rem);
@@ -134,26 +136,21 @@ html.js:not(.rm) [data-reveal="up"] {
 html.js:not(.rm) [data-mask] {
   overflow: hidden;
 }
-html.js:not(.rm) [data-mask] > [data-mask-inner] {
-  will-change: transform;
-}
-/* Photo "develop": blurred + clipped until the intro tween develops it */
+/* Photo "develop": blurred + clipped until the intro/scroll tween develops it */
 html.js:not(.rm) [data-develop] {
   clip-path: inset(0 0 100% 0);
   filter: blur(18px);
   transform: scale(1.06);
-  will-change: clip-path, filter, transform;
 }
 
 /* ============================================================
-   Custom cursor — hide native cursor only with a fine pointer
-   and only while the custom cursor is active.
+   Custom cursor — the native cursor stays visible everywhere by
+   default; it is hidden ONLY over reveal targets (`[data-cursor]`),
+   where the labeled disc takes its place. Fine pointer + active only.
    ============================================================ */
 @media (pointer: fine) {
-  html.js.cursor-active,
-  html.js.cursor-active a,
-  html.js.cursor-active button,
-  html.js.cursor-active [data-cursor] {
+  html.js.cursor-active [data-cursor],
+  html.js.cursor-active [data-cursor] * {
     cursor: none;
   }
 }

@@ -20,7 +20,6 @@ export function Partners() {
             </p>
             <a
               href={APPLY_URL}
-              data-cursor="WRITE"
               className="mt-8 inline-flex items-center gap-2 font-sans text-base font-medium text-ink underline-offset-4 hover:underline"
             >
               {PARTNERS_INTRO.cta} <span aria-hidden>→</span>
