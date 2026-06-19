@@ -137,19 +137,12 @@ html.js:not(.rm) [data-mask] {
 html.js:not(.rm) [data-mask] > [data-mask-inner] {
   will-change: transform;
 }
-/* Photo "develop": blurred + clipped until ScrollTrigger develops it */
+/* Photo "develop": blurred + clipped until the intro tween develops it */
 html.js:not(.rm) [data-develop] {
   clip-path: inset(0 0 100% 0);
   filter: blur(18px);
   transform: scale(1.06);
   will-change: clip-path, filter, transform;
-}
-/* Hero masthead "2007": solid copy hidden (fills up on scrub), underline collapsed */
-html.js:not(.rm) [data-year-fill] {
-  clip-path: inset(100% 0 0 0);
-}
-html.js:not(.rm) [data-year-underline] {
-  transform: scaleX(0);
 }
 
 /* ============================================================

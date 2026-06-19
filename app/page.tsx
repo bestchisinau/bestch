@@ -15,13 +15,16 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <About />
-        <ValuesMarquee />
-        <Activities />
-        <Gallery />
-        <Impact />
-        <Partners />
-        <FinalCTA />
+        {/* Raised, opaque layer: scrolls up and over the sticky hero. */}
+        <div className="relative z-10">
+          <About />
+          <ValuesMarquee />
+          <Activities />
+          <Gallery />
+          <Impact />
+          <Partners />
+          <FinalCTA />
+        </div>
       </main>
       <Footer />
     </>

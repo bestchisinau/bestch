@@ -36,9 +36,9 @@ export const NAV: NavLink[] = [
 export const HERO = {
   eyebrow: "LBG Chișinău · BEST",
   meta: "EST. 2007 · 47.0°N",
-  // The three poster lines; the 4th element (year) is rendered as the masthead.
-  lines: ["Developing", "Students", "Since"],
-  year: "2007",
+  // Centered headline over the full-bleed photo (rendered by SplitText).
+  // "2007" is on its own line so it can take the sunflower accent knockout.
+  lines: ["Developing students", "since 2007"],
   subhead:
     "We are BEST Chișinău — the local group of the Board of European Students of Technology. We turn curious technical students into confident builders, friends, and Europeans. Bring the curiosity; we'll develop the rest.",
   primaryCta: "Apply Now",
