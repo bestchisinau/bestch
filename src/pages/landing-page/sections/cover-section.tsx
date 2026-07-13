@@ -14,9 +14,6 @@ const CoverSection = () => {
   return (
     <section className="xl:h-screen h-full pb-[50px] pt-[120px] flex flex-col justify-center">
       <div className="flex flex-col">
-        <h1 className="xl:text-[4rem] sm:text-[5vw] text-[28px] font-medium leading-normal">
-          {t('At')}
-        </h1>
         <img
           src="./src/assets/media-unbothered.svg"
           alt="Media Unbothered"
@@ -25,9 +22,6 @@ const CoverSection = () => {
           onMouseLeave={() => setCursorSize(40)}
           loading="lazy"
         />
-        <h1 className="xl:text-[4rem] sm:text-[5vw] text-[28px] font-medium leading-normal">
-          {t('we defy the odds.')}
-        </h1>
       </div>
 
       <div className="flex-inline md:flex md:flex-row flex-col md:mt-[38px] mt-[18px]">

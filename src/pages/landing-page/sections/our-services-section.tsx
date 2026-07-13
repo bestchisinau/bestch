@@ -10,24 +10,34 @@ const OurServicesSection = () => {
 
   const services = [
     {
-      title: 'Web development',
+      title: 'Curs de Vară',
       sideText: 'Check it out!',
-      to: '/web-development'
+      to: '/curs-de-vara'
     },
     {
-      title: 'Web design',
+      title: 'Rube Goldberg',
       sideText: 'Have a look!',
-      to: '/web-design'
+      to: '/rube-goldberg'
     },
     {
-      title: 'Maintenance',
+      title: 'Hackathon',
       sideText: 'Explore!',
-      to: '/maintenance-&-support'
+      to: '/hackathon'
     },
     {
-      title: 'SEO',
+      title: 'BEST Talks',
       sideText: 'Peek in!',
-      to: '/seo'
+      to: '/best-talks'
+    },
+    {
+      title: 'Recrutări',
+      sideText: 'Join us!',
+      to: '/recrutari'
+    },
+    {
+      title: 'Evenimente Interne',
+      sideText: 'Discover!',
+      to: '/evenimente-interne'
     }
   ]
 
