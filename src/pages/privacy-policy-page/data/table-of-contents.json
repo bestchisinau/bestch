@@ -1,0 +1,53 @@
+{
+  "title": "Table of Contents",
+  "contents": [
+    {
+      "title": "What information do we collect?",
+      "id": "info-we-collect"
+    },
+    {
+      "title": "How do we process your information?",
+      "id": "info-we-process"
+    },
+    {
+      "title": "When and with whom do we share your personal information?",
+      "id": "info-we-share"
+    },
+    {
+      "title": "Do we use cookies and other tracking technologies?",
+      "id": "cookies-and-tracking"
+    },
+    {
+      "title": "Is your information transferred internationally?",
+      "id": "info-we-transfer"
+    },
+    {
+      "title": "How long do we keep your information?",
+      "id": "info-we-keep"
+    },
+    {
+      "title": "Do we collect information from minors?",
+      "id": "info-from-minors"
+    },
+    {
+      "title": "What are your privacy rights?",
+      "id": "privacy-rights"
+    },
+    {
+      "title": "Controls for do-not-track features",
+      "id": "non-tracking"
+    },
+    {
+      "title": "Do we make updates to this notice?",
+      "id": "updates-to-notice"
+    },
+    {
+      "title": "How can you contact us about this notice?",
+      "id": "contact-us"
+    },
+    {
+      "title": "How can you review, update, or delete the data we collect from you?",
+      "id": "data-we-manipulate"
+    }
+  ]
+}

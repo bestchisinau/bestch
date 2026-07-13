@@ -1,0 +1,29 @@
+{
+  "title": "2. HOW DO WE PROCESS YOUR INFORMATION?",
+  "content": [
+    "<span style='font-weight: 600; font-style: italic'>In Short:</span> <span style='font-style: italic'>We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent.</span>",
+    "<span style='font-wegith: 600'>We process your personal information for a variety of reasons, depending on how you interact with our Services, including:",
+    "We value your privacy, and we will only process your information for additional purposes with your explicit consent. You have the right to control how your information is used, and we ensure that your consent is obtained before processing data for any purpose beyond the outlined ones."
+  ],
+  "fullName": {
+    "title": "Full name:",
+    "content": [
+      "Purpose: We collect your full name to uniquely identify you and personalize our interactions with you.",
+      "Usage: This information helps us address you by name and enhance your overall experience with our Services."
+    ]
+  },
+  "email": {
+    "title": "Email",
+    "content": [
+      "Purpose: We collect your email to establish a means of communication with you.",
+      "Usage: This enables us to send important updates, respond to inquiries, and keep you informed about relevant matters related to our Services."
+    ]
+  },
+  "formOfPayment": {
+    "title": "Form of Payment (usually PayPal):",
+    "content": [
+      "Purpose: We collect payment information, typically through PayPal, to facilitate transactions and process payments for the Services you choose to avail.",
+      "Usage: This information is requested after a chat session and provides a secure and convenient way for you to make payments for the Services rendered."
+    ]
+  }
+}
