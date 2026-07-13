@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useLenis } from "@/components/providers/SmoothScroll";
-import { SITE, FOOTER, CONTACT, BEST_FOUNDED } from "@/lib/content";
+import { SITE, FOOTER, CONTACT } from "@/lib/content";
+import logo from "@/assets/logos/best-chisinau.png";
 
 export function Footer() {
   const { scrollTo } = useLenis();
@@ -11,12 +13,8 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-10 md:py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <button
-              onClick={() => scrollTo("#hero")}
-              className="font-display text-4xl font-semibold tracking-tight"
-            >
-              {SITE.wordmark}
-              <span className="text-sun">.</span>
+            <button onClick={() => scrollTo("#hero")} aria-label={`${SITE.wordmark} Chișinău — top`}>
+              <Image src={logo} alt={`${SITE.wordmark} Chișinău`} className="h-12 w-auto md:h-14" />
             </button>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-paper/55">{FOOTER.blurb}</p>
           </div>
@@ -65,16 +63,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-        </div>
-
-        <div className="mt-16 flex flex-col gap-4 border-t border-paper/15 pt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 sm:flex-row sm:items-center sm:justify-between">
-          <span>{FOOTER.endOfRoll}</span>
-          <span>
-            © {new Date().getFullYear()} {SITE.name} · {SITE.full}, since {BEST_FOUNDED}
-          </span>
-          <button onClick={() => scrollTo("#hero")} className="text-left hover:text-sun sm:text-right">
-            ↑ Rewind to top
-          </button>
         </div>
       </div>
     </footer>

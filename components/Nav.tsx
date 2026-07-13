@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "@/components/providers/SmoothScroll";
 import { NAV, SITE, APPLY_URL } from "@/lib/content";
+import logo from "@/assets/logos/best-chisinau.png";
 
 const SECTION_IDS = ["hero", "about", "activities", "impact", "partners", "cta"];
 
@@ -79,22 +81,14 @@ export function Nav() {
           solid ? "bg-paper/80 backdrop-blur-md" : "bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:h-20 md:px-10">
-          <button
-            onClick={() => go("#hero")}
-            className={`font-display text-lg font-semibold tracking-tight transition-colors ${
-              solid ? "text-ink" : "text-paper"
-            }`}
-          >
-            {SITE.wordmark}
-            <span className="text-sun">.</span>
-            <span
-              className={`ml-1 hidden font-sans text-sm font-normal sm:inline ${
-                solid ? "text-ink/55" : "text-paper/70"
-              }`}
-            >
-              Chișinău
-            </span>
+        <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-5 md:h-24 md:px-10">
+          <button onClick={() => go("#hero")} aria-label={`${SITE.wordmark} Chișinău — home`}>
+            <Image
+              src={logo}
+              alt={`${SITE.wordmark} Chișinău`}
+              priority
+              className="h-16 w-auto md:h-20"
+            />
           </button>
 
           <div className="hidden items-center gap-8 md:flex">
