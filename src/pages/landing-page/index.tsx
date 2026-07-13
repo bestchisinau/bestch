@@ -1,6 +1,7 @@
 import CoverSection from './sections/cover-section'
 import WhyUsSection from './sections/why-us-section'
 import OurServicesSection from './sections/our-services-section'
+import BoardSection from './sections/board-section'
 import ReadyToChatSection from './sections/ready-to-chat-section'
 
 const LandingPage = () => {
@@ -13,8 +14,9 @@ const LandingPage = () => {
         <hr className="w-full h-[2px] bg-white opacity-40 rounded-full" />
         <OurServicesSection />
         <hr className="w-full h-[2px] bg-white opacity-40 rounded-full" />
-        <ReadyToChatSection />
+        <BoardSection />
         <hr className="w-full h-[2px] bg-white opacity-40 rounded-full" />
+        <ReadyToChatSection />
       </div>
     </div>
   )

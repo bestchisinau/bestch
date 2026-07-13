@@ -12,7 +12,8 @@ const OurServicesSection = () => {
     {
       title: 'Curs de Vară',
       sideText: 'Check it out!',
-      to: '/curs-de-vara'
+      to: 'https://bestch-sm26.vercel.app',
+      external: true
     },
     {
       title: 'Rube Goldberg',
@@ -47,27 +48,51 @@ const OurServicesSection = () => {
         {t('Our events')}
       </h2>
 
-      {services.map((service, index) => (
-        <Fragment key={service.title}>
-          <Link
-            to={service.to}
-            id={`service-${index}`}
-            className="group flex gap-4 hover:text-black hover:bg-gradient-to-r from-white/60 via-white to-white/60 md:hover:pl-16 hover:pl-6 transition-all md:pt-4 pt-2"
-            onMouseOver={() => setCursorSize(180)}
-            onMouseLeave={() => setCursorSize(40)}
-          >
+      {services.map((service, index) => {
+        const className =
+          'group flex gap-4 hover:text-black hover:bg-gradient-to-r from-white/60 via-white to-white/60 md:hover:pl-16 hover:pl-6 transition-all md:pt-4 pt-2'
+        const content = (
+          <>
             <h1 className="xl:text-[100px] text-[7.14vw] leading-none py-4 whitespace-nowrap">
               {t(service.title)}
             </h1>
             <p className="text-white/60 md:text-[20px] text-[10px] self-end  font-normal underline md:mb-[2vw] mb-[3vw] group-hover:opacity-0">
               {t(service.sideText)}
             </p>
-          </Link>
-          {index !== services.length - 1 && (
-            <hr className="w-full h-[2px] bg-white opacity-40 rounded-full" />
-          )}
-        </Fragment>
-      ))}
+          </>
+        )
+
+        return (
+          <Fragment key={service.title}>
+            {service.external ? (
+              <a
+                href={service.to}
+                id={`service-${index}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+                onMouseOver={() => setCursorSize(180)}
+                onMouseLeave={() => setCursorSize(40)}
+              >
+                {content}
+              </a>
+            ) : (
+              <Link
+                to={service.to}
+                id={`service-${index}`}
+                className={className}
+                onMouseOver={() => setCursorSize(180)}
+                onMouseLeave={() => setCursorSize(40)}
+              >
+                {content}
+              </Link>
+            )}
+            {index !== services.length - 1 && (
+              <hr className="w-full h-[2px] bg-white opacity-40 rounded-full" />
+            )}
+          </Fragment>
+        )
+      })}
     </section>
   )
 }
