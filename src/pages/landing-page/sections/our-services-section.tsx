@@ -44,7 +44,7 @@ const OurServicesSection = () => {
   return (
     <section ref={rootRef} className="md:py-[130px] py-[50px]">
       <h2 className="text-white/80 md:text-xl text-base font-normal leading-normal md:mb-[21px] pb-[6px]">
-        {t('Our services')}
+        {t('Our events')}
       </h2>
 
       {services.map((service, index) => (

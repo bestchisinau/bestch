@@ -23,16 +23,21 @@ const Header = () => {
   ]
 
   return (
-    <header className="w-screen absolute z-40 transform-gpu">
+    <header className="w-screen absolute z-40 pt-[15px] xl:pt-[40px] transform-gpu">
       <div className="max-w-[1400px] h-[75px] mx-auto xl:px-[75px] px-[18px] text-white flex justify-between items-center transition-[padding] duration-500">
         <div className="sm:static absolute left-0 sm:w-auto w-screen text-center">
           <Link
             to="/"
-            className="text-white/60 sm:hover:text-white text-[50px] font-humane font-bold leading-normal tracking-normal sm:hover:tracking-wider transition-[letter-spacing]"
+            className="inline-block sm:opacity-80 sm:hover:opacity-100 transition-opacity"
             onMouseOver={() => setCursorSize(100)}
             onMouseLeave={() => setCursorSize(40)}
           >
-            MEDIA UNBOTHERED
+            <img
+              src="./src/assets/best-chisinau.png"
+              alt="BEST Chisinau"
+              className="h-[100px] xl:h-[140px] w-auto sm:mx-0 mx-auto"
+              loading="lazy"
+            />
           </Link>
         </div>
 
