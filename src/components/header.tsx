@@ -8,6 +8,8 @@ import useCursorSize from '../lib/use-cursor-size'
 import HamburgerMenu from './hamburger-menu'
 import MobileDrawer from './mobile-drawer'
 import LanguageDropdownMenu from './language-dropdown-menu'
+import bestChisinau from '../assets/best-chisinau.png'
+import ellipse from '../assets/ellipse.svg'
 
 const Header = () => {
   const [drawerOpened, setDrawerOpened] = useState(false)
@@ -33,7 +35,7 @@ const Header = () => {
             onMouseLeave={() => setCursorSize(40)}
           >
             <img
-              src="./src/assets/best-chisinau.png"
+              src={bestChisinau}
               alt="BEST Chisinau"
               className="h-[100px] xl:h-[140px] w-auto sm:mx-0 mx-auto"
               loading="lazy"
@@ -62,7 +64,7 @@ const Header = () => {
               </Link>
 
               <img
-                src="./src/assets/ellipse.svg"
+                src={ellipse}
                 alt=""
                 className="-z-50"
                 loading="lazy"

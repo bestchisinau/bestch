@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 import React from 'react'
+import hamburgerMenu from '../assets/hamburger-menu.svg'
 
 type HamburgerMenuProps = {
   openDrawer: () => void
@@ -18,7 +19,7 @@ const HamburgerMenu = ({ openDrawer, drawerRef }: HamburgerMenuProps) => {
 
   return (
     <img
-      src="./src/assets/hamburger-menu.svg"
+      src={hamburgerMenu}
       className="block sm:hidden w-[30px] h-[20px] absolute cursor-pointer right-[16px]"
       onClick={openDrawerWithAnimation}
       loading="lazy"

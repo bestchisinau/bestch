@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
 import useCursorSize from '../lib/use-cursor-size'
 import { useTranslation } from 'react-i18next'
+import bestChisinau from '../assets/best-chisinau.png'
+import facebook from '../assets/footer/Facebook.svg'
+import instagram from '../assets/footer/Instagram.svg'
+import linkedin from '../assets/footer/LinkedIn.svg'
 
 const Footer = () => {
   const { setCursorSize } = useCursorSize()
@@ -37,17 +41,17 @@ const Footer = () => {
   const socials = [
     {
       alt: 'Facebook',
-      imageSrc: './src/assets/footer/Facebook.svg',
+      imageSrc: facebook,
       to: 'https://www.facebook.com/BEST.Chisinau/'
     },
     {
       alt: 'Instagram',
-      imageSrc: './src/assets/footer/Instagram.svg',
+      imageSrc: instagram,
       to: 'https://www.instagram.com/best_chisinau/?hl=en'
     },
     {
       alt: 'LinkedIn',
-      imageSrc: './src/assets/footer/LinkedIn.svg',
+      imageSrc: linkedin,
       to: 'https://www.linkedin.com/company/best-chisinau/posts/?feedView=all'
     }
   ]
@@ -64,7 +68,7 @@ const Footer = () => {
               onMouseLeave={() => setCursorSize(40)}
             >
               <img
-                src="./src/assets/best-chisinau.png"
+                src={bestChisinau}
                 alt="BEST Chisinau"
                 className="w-[200px] opacity-80"
                 loading="lazy"

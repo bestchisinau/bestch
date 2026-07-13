@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import MobileLanguageDropdownMenu from './mobile-language-dropdown-menu'
 import { useDispatch } from 'react-redux'
 import { setDialogVisibility } from '../store/reducers/dialog-visible-slice'
+import mobileDrawerClose from '../assets/mobile-drawer-close.svg'
 
 type MobileDrawerProps = {
   links: { title: string; to?: string }[]
@@ -61,7 +62,7 @@ const MobileDrawer = ({
       style={{ transform: `translateY(-100dvh)` }}
     >
       <img
-        src="./src/assets/mobile-drawer-close.svg"
+        src={mobileDrawerClose}
         onClick={closeDrawerWithAnimation}
         className="w-[30px] self-end mt-6 mr-4 cursor-pointer"
         loading="lazy"

@@ -5,6 +5,7 @@ import { setDialogVisibility } from '../../../store/reducers/dialog-visible-slic
 import CustomButton from '../../../components/custom-button'
 import HireUsButton from '../../../components/hire-us-button'
 import useCursorSize from '../../../lib/use-cursor-size'
+import mediaUnbothered from '../../../assets/media-unbothered.svg'
 
 const CoverSection = () => {
   const { setCursorSize } = useCursorSize()
@@ -15,7 +16,7 @@ const CoverSection = () => {
     <section className="xl:h-screen h-full pb-[50px] pt-[120px] flex flex-col justify-center">
       <div className="flex flex-col">
         <img
-          src="./src/assets/media-unbothered.svg"
+          src={mediaUnbothered}
           alt="Media Unbothered"
           className="w-screen"
           onMouseOver={() => setCursorSize(300)}

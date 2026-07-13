@@ -1,5 +1,7 @@
 import useCursorSize from '../lib/use-cursor-size'
 import GsapMagnetic from './gsap-magnetic'
+import hireUsButton from '../assets/hire-us-button.png'
+import hireUsArrow from '../assets/hire-us-arrow.svg'
 
 type HireUsButtonProps = {
   onClick?: () => void
@@ -15,7 +17,7 @@ const HireUsButton = ({ onClick }: HireUsButtonProps) => {
     >
       <GsapMagnetic>
         <img
-          src="./src/assets/hire-us-button.png"
+          src={hireUsButton}
           className="w-[150px] h-[150px] hover:rotate-180 transition-all duration-500 ease-in-out cursor-pointer"
           alt="Hire us"
           onMouseOver={() => setCursorSize(150)}
@@ -23,7 +25,7 @@ const HireUsButton = ({ onClick }: HireUsButtonProps) => {
           loading="lazy"
         />
         <img
-          src="./src/assets/hire-us-arrow.svg"
+          src={hireUsArrow}
           className="absolute pointer-events-none"
           loading="lazy"
         />

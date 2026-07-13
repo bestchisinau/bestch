@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLanguage } from '../store/reducers/language-slice'
+import dropdownMenuIcon from '../assets/dropdown-menu-icon.svg'
 
 type LanguageState = {
   language: {
@@ -36,7 +37,7 @@ const MobileLanguageDropdownMenu = () => {
         </button>
 
         <img
-          src="./src/assets/dropdown-menu-icon.svg"
+          src={dropdownMenuIcon}
           className={`w-[24px] transition-all duration-300 ${
             dropdownVisible ? 'rotate-180' : 'rotate-0'
           }`}

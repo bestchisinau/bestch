@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import useCursorSize from '../lib/use-cursor-size'
+import arrowUp from '../assets/arrow-up.svg'
 
 const TableOfContents = () => {
   const { t } = useTranslation()
@@ -85,7 +86,7 @@ const TableOfContents = () => {
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         {t('Back to top')}
-        <img src="./src/assets/arrow-up.svg" className="w-4" />
+        <img src={arrowUp} className="w-4" />
       </button>
     </div>
   )

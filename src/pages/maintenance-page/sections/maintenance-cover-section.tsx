@@ -4,6 +4,7 @@ import HireUsButton from '../../../components/hire-us-button'
 import useCursorSize from '../../../lib/use-cursor-size'
 import { useDispatch } from 'react-redux'
 import { setDialogVisibility } from '../../../store/reducers/dialog-visible-slice'
+import maintenanceHeaderText from '../../../assets/service-header-texts/maintenance.svg'
 
 const MaintenanceCoverSection = () => {
   const { setCursorSize } = useCursorSize()
@@ -14,7 +15,7 @@ const MaintenanceCoverSection = () => {
     <section className="xl:h-screen h-full pb-[50px] pt-[120px] flex flex-col justify-center">
       <div className="flex flex-col ">
         <img
-          src={`./src/assets/service-header-texts/maintenance.svg`}
+          src={maintenanceHeaderText}
           alt="Media Unbothered"
           className="self-start xl:h-[256px] h-[18.28vw]"
           onMouseOver={() => setCursorSize(300)}

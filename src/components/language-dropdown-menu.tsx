@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLanguage } from '../store/reducers/language-slice'
 import useCursorSize from '../lib/use-cursor-size'
+import dropdownMenuIcon from '../assets/dropdown-menu-icon.svg'
 
 type LanguageState = {
   language: {
@@ -38,7 +39,7 @@ const LanguageDropdownMenu = () => {
           .map((lang) => (
             <p key={lang.language}>{lang.language}</p>
           ))}
-        <img src="./src/assets/dropdown-menu-icon.svg" className="w-[12px]" />
+        <img src={dropdownMenuIcon} className="w-[12px]" />
       </div>
 
       <div

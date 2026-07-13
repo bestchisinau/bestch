@@ -1,27 +1,28 @@
 import { useTranslation } from 'react-i18next'
 import useCursorSize from '../../../lib/use-cursor-size'
+import placeholder from '../../../assets/board/placeholder.svg'
 
 const BoardSection = () => {
   const { setCursorSize } = useCursorSize()
   const { t } = useTranslation()
 
   const members = [
-    { name: 'Nume Prenume', role: 'Președinte', image: './src/assets/board/placeholder.svg' },
-    { name: 'Nume Prenume', role: 'Secretar', image: './src/assets/board/placeholder.svg' },
+    { name: 'Nume Prenume', role: 'Președinte', image: placeholder },
+    { name: 'Nume Prenume', role: 'Secretar', image: placeholder },
     {
       name: 'Nume Prenume',
       role: 'VP Relații cu Companiile',
-      image: './src/assets/board/placeholder.svg'
+      image: placeholder
     },
     {
       name: 'Nume Prenume',
       role: 'VP Relații Publice',
-      image: './src/assets/board/placeholder.svg'
+      image: placeholder
     },
     {
       name: 'Nume Prenume',
       role: 'VP Resurse Umane',
-      image: './src/assets/board/placeholder.svg'
+      image: placeholder
     }
   ]
 
