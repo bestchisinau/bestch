@@ -6,17 +6,16 @@ import { useGSAP } from "@gsap/react";
 import { useLenis } from "@/components/providers/SmoothScroll";
 import { NAV, SITE, APPLY_URL } from "@/lib/content";
 
-const SECTION_IDS = ["hero", "about", "values", "activities", "gallery", "impact", "partners", "cta"];
+const SECTION_IDS = ["hero", "about", "activities", "impact", "partners", "cta"];
 
 export function Nav() {
   const { scrollTo } = useLenis();
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
   const [active, setActive] = useState("hero");
-  const [frame, setFrame] = useState(1);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Active section + solid bar + film-frame counter, from scroll.
+  // Active section + solid bar, from scroll.
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
@@ -33,10 +32,7 @@ export function Nav() {
 
     const onScroll = () => {
       const h = document.documentElement;
-      const max = h.scrollHeight - h.clientHeight;
-      const p = max > 0 ? h.scrollTop / max : 0;
       setSolid(h.scrollTop > h.clientHeight * 0.7);
-      setFrame(Math.max(1, Math.min(42, Math.round(p * 41) + 1)));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -78,14 +74,6 @@ export function Nav() {
 
   return (
     <>
-      {/* Decorative film-roll frame + counter (aria-hidden) */}
-      <div aria-hidden className="pointer-events-none fixed inset-0 z-30 hidden md:block">
-        <div className="absolute inset-3 rounded-[10px] border border-sun/35" />
-        <div className="absolute bottom-5 left-6 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/45">
-          Frame {String(frame).padStart(3, "0")} / 042
-        </div>
-      </div>
-
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
           solid ? "bg-paper/80 backdrop-blur-md" : "bg-transparent"

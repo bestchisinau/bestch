@@ -18,9 +18,6 @@ export function Footer() {
               {SITE.wordmark}
               <span className="text-sun">.</span>
             </button>
-            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.22em] text-paper/45">
-              {SITE.local} · Est. {SITE.tagline.match(/\d{4}/)?.[0]}
-            </p>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-paper/55">{FOOTER.blurb}</p>
           </div>
 

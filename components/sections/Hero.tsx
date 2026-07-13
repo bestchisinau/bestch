@@ -98,13 +98,6 @@ export function Hero() {
 
       {/* Centered content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 text-center md:px-10">
-        <span
-          data-reveal
-          className="mb-6 font-mono text-[11px] uppercase tracking-[0.28em] text-paper/70 md:text-xs"
-        >
-          {HERO.meta}
-        </span>
-
         <SplitText
           as="h1"
           lines={HERO.lines}

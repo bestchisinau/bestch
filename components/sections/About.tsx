@@ -41,10 +41,6 @@ export function About() {
                   className="object-cover"
                 />
               </div>
-              <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-ink/45">
-                <span>{ABOUT.imageCaption}</span>
-                <span>{ABOUT.imageStamp}</span>
-              </div>
             </div>
           </div>
         </div>

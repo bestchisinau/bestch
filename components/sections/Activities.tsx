@@ -23,40 +23,77 @@ export function Activities() {
   useGSAP(
     () => {
       if (!matches(MQ.fine) || matches(MQ.reduce)) return;
+      const section = scope.current!;
       const thumbEl = thumb.current!;
       const imgs = gsap.utils.toArray<HTMLElement>(thumbEl.querySelectorAll("[data-thumb-img]"));
-      const rows = gsap.utils.toArray<HTMLElement>(scope.current!.querySelectorAll("[data-row]"));
+      const rows = gsap.utils.toArray<HTMLElement>(section.querySelectorAll("[data-row]"));
+      const names = rows.map((row) => row.querySelector("[data-row-name]"));
 
       gsap.set(thumbEl, { xPercent: -50, yPercent: -50, autoAlpha: 0, scale: 0.85 });
-      const xTo = gsap.quickTo(thumbEl, "x", { duration: 0.5, ease: "power3" });
-      const yTo = gsap.quickTo(thumbEl, "y", { duration: 0.5, ease: "power3" });
+      // Snappy follow — short duration so the thumb tracks the cursor immediately.
+      const xTo = gsap.quickTo(thumbEl, "x", { duration: 0.18, ease: "power3" });
+      const yTo = gsap.quickTo(thumbEl, "y", { duration: 0.18, ease: "power3" });
 
-      const cleanups: Array<() => void> = [];
-      rows.forEach((row, i) => {
-        const name = row.querySelector("[data-row-name]");
-        const enter = () => {
-          imgs.forEach((im, k) => gsap.to(im, { autoAlpha: k === i ? 1 : 0, duration: 0.25 }));
-          gsap.to(thumbEl, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "expo.out" });
-          gsap.to(name, { x: 24, duration: 0.4, ease: "power3" });
-        };
-        const move = (e: PointerEvent) => {
-          xTo(e.clientX);
-          yTo(e.clientY);
-        };
-        const leave = () => {
-          gsap.to(thumbEl, { autoAlpha: 0, scale: 0.85, duration: 0.3 });
-          gsap.to(name, { x: 0, duration: 0.4, ease: "power3" });
-        };
-        row.addEventListener("pointerenter", enter);
-        row.addEventListener("pointermove", move);
-        row.addEventListener("pointerleave", leave);
-        cleanups.push(() => {
-          row.removeEventListener("pointerenter", enter);
-          row.removeEventListener("pointermove", move);
-          row.removeEventListener("pointerleave", leave);
-        });
-      });
-      return () => cleanups.forEach((c) => c());
+      // Single source of truth for which row is hovered (-1 = none). Visibility
+      // is derived from real pointer movement + cleared on scroll, so the fixed
+      // thumb can never get stuck when boundary events are missed.
+      let current = -1;
+      // Last real cursor position — used to ignore the synthetic pointermove the
+      // browser fires (same coords) when content scrolls under a still cursor.
+      let lastX = -1;
+      let lastY = -1;
+
+      const show = (i: number) => {
+        if (current === i) return;
+        current = i;
+        imgs.forEach((im, k) => gsap.to(im, { autoAlpha: k === i ? 1 : 0, duration: 0.2 }));
+        gsap.to(thumbEl, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "expo.out" });
+        names.forEach((name, k) => gsap.to(name, { x: k === i ? 24 : 0, duration: 0.4, ease: "power3" }));
+      };
+
+      const hide = () => {
+        if (current === -1) return;
+        current = -1;
+        gsap.to(thumbEl, { autoAlpha: 0, scale: 0.85, duration: 0.25 });
+        names.forEach((name) => gsap.to(name, { x: 0, duration: 0.4, ease: "power3" }));
+      };
+
+      const onMove = (e: PointerEvent) => {
+        // Skip the synthetic move emitted on scroll (cursor hasn't truly moved).
+        // Without this, it re-shows the thumb right after the scroll hid it.
+        if (e.clientX === lastX && e.clientY === lastY) return;
+        lastX = e.clientX;
+        lastY = e.clientY;
+
+        const row = (e.target as HTMLElement)?.closest?.("[data-row]");
+        const i = row ? rows.indexOf(row as HTMLElement) : -1;
+        if (i === -1) {
+          hide();
+          return;
+        }
+        // Snap to the cursor the first frame it appears, then track smoothly.
+        if (current === -1) gsap.set(thumbEl, { x: e.clientX, y: e.clientY });
+        xTo(e.clientX);
+        yTo(e.clientY);
+        show(i);
+      };
+
+      // Any scroll intent clears the thumb — it must only show while genuinely
+      // hovering, never while scrolling past. `wheel` is the most reliable
+      // signal (fires even when Lenis intercepts the native scroll event).
+      const onScroll = () => hide();
+
+      section.addEventListener("pointermove", onMove, { passive: true });
+      section.addEventListener("pointerleave", hide);
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("wheel", onScroll, { passive: true });
+
+      return () => {
+        section.removeEventListener("pointermove", onMove);
+        section.removeEventListener("pointerleave", hide);
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("wheel", onScroll);
+      };
     },
   );
 
