@@ -110,6 +110,10 @@ const Footer = () => {
         <div className="mt-[50px] pt-[24px] border-t border-white/10 flex md:flex-row flex-col-reverse justify-between items-center gap-[20px]">
           <p className="text-[13px] text-white/40 text-center">
             © {new Date().getFullYear()} BEST Chișinău. {t('All rights reserved.')}
+            <span className="block mt-[4px]">Charity ID: 1012620006808</span>
+            <span className="block mt-[4px] not-italic">
+              str. Studenţilor 7, bloc 3, cabinet 213
+            </span>
           </p>
 
           <div className="flex gap-[24px]">
