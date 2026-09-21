@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap');
+
 /*
  * Rube Goldberg 2026. One layer, mobile first:
  * tokens, fields, grid, type roles, components, sections, then three breakpoints.
@@ -22,8 +24,8 @@
   --rg-header-h: 110px;
   --rg-space: 0.6;
 
-  --t-display: clamp(4.5rem, 11.5vw, 10.5rem);
-  --t-num: clamp(3.25rem, 7vw, 6.5rem);
+  --t-display: clamp(3.25rem, 8vw, 6.625rem);
+  --t-num: clamp(2.75rem, 6vw, 5.5rem);
   --t-head: clamp(1.625rem, 2.4vw, 2.25rem);
   --t-lead: clamp(1.25rem, 1.7vw, 1.625rem);
   --t-body: clamp(1.0625rem, 1.15vw, 1.1875rem);
@@ -88,14 +90,14 @@
 /* Statements and real numerals only. */
 .rg-display,
 .rg-numeral {
-  font-family: 'Humane', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .rg-display {
   /* Room for Ă Î Ș inside the box, so a wipe never shaves an accent. */
-  padding-top: 0.06em;
+  padding-block: 0.06em;
   color: var(--rg-accent);
   font-size: var(--t-display);
   line-height: 0.92;
@@ -267,6 +269,10 @@
   margin-top: 32px;
 }
 
+.rg-band .rg-numeral {
+  font-size: clamp(1.75rem, 4vw, 2.125rem);
+}
+
 .rg-band__cells {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -296,8 +302,6 @@
 }
 
 .rg-band__venue {
-  font-size: var(--t-lead);
-  font-weight: 500;
   line-height: 1.25;
 }
 
@@ -584,6 +588,11 @@
   border-bottom: 1px solid var(--rg-hair);
 }
 
+.rg-stage .rg-numeral {
+  font-size: clamp(2.5rem, 3.75vw, 3.5rem);
+  white-space: nowrap;
+}
+
 .rg-stage--final .rg-numeral {
   color: var(--rg-yellow);
 }
@@ -666,11 +675,11 @@
 }
 
 .rg-sponsor {
-  grid-column: span 3;
+  grid-column: 1 / -1;
 }
 
 .rg-sponsor--featured {
-  grid-column: span 6;
+  grid-column: 1 / -1;
 }
 
 .rg-sponsor__cell {
@@ -803,7 +812,7 @@
   }
 
   .rg-challenge__book {
-    grid-column: 1 / span 5;
+    grid-column: 2 / span 6;
   }
 
   .rg-spec__cells {

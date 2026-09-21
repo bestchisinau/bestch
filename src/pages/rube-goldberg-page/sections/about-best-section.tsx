@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import useCopy from '../use-copy'
 import RailHeading from '../components/rail-heading'
 import { Fade, Wipe } from '../motion/primitives'
-import { instagramUrl } from '../data'
+import { facebookUrl, instagramUrl, linkedinUrl } from '../data'
 import groupPhoto from '../../../assets/about-us/best-text-group-photo.jpg'
 
 const AboutBestSection = () => {
@@ -25,6 +25,8 @@ const AboutBestSection = () => {
           <div className="rg-actions">
             <Link className="rg-link" to="/about-us">{copy('Descoperă BEST Chișinău', 'Discover BEST Chișinău')}</Link>
             <a className="rg-link" href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a>
+            <a className="rg-link" href={facebookUrl} target="_blank" rel="noreferrer">Facebook</a>
+            <a className="rg-link" href={linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </Fade>
       </div>

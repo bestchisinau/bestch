@@ -26,7 +26,7 @@ const DateBand = () => {
         </div>
         <div className="rg-band__cell rg-band__cell--venue">
           <dt className="rg-label">{pick(labels.venue)}</dt>
-          <dd className="rg-band__venue">{pick(campus)}</dd>
+          <dd className="rg-band__venue rg-numeral">{pick(campus)}</dd>
         </div>
       </dl>
     </div>

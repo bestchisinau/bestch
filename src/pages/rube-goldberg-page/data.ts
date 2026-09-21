@@ -7,7 +7,9 @@ import utmLogo from '../../assets/rube-goldberg/sponsors/utm-logo.png'
 
 export const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Rube%20Goldberg%202026&dates=20261030T100000%2F20261030T140000&ctz=Europe%2FChisinau&location=Universitatea%20Tehnica%20a%20Moldovei%2C%20Aula%203-3&details=Jurizarea%20Rube%20Goldberg%202026%20si%20demonstratiile%20celor%209%20echipe.'
 export const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universitatea+Tehnica+a+Moldovei+Aula+3-3+Chisinau'
+export const facebookUrl = 'https://www.facebook.com/BEST.Chisinau/'
 export const instagramUrl = 'https://www.instagram.com/best_chisinau/'
+export const linkedinUrl = 'https://www.linkedin.com/company/best-chisinau/posts/?feedView=all'
 
 export const eventDate = { iso: '2026-10-30', label: '30.10.2026' }
 export const eventTime = '10:00–14:00'
