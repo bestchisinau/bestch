@@ -1,0 +1,56 @@
+{
+  "finalDay": [
+    {
+      "start": "10:00",
+      "end": "10:15",
+      "venue": "tent",
+      "title": { "ro": "Deschiderea", "en": "Opening" },
+      "public": true
+    },
+    {
+      "start": "10:15",
+      "end": "10:50",
+      "venue": "tent",
+      "title": { "ro": "Prezentarea mașinăriilor", "en": "Machine presentations" },
+      "public": true
+    },
+    {
+      "start": "10:55",
+      "end": "12:15",
+      "venue": "tent",
+      "title": { "ro": "Prima rundă de jurizare", "en": "First judging round" },
+      "public": true
+    },
+    {
+      "start": "12:15",
+      "end": "12:30",
+      "venue": "tent",
+      "title": { "ro": "Pauză de cafea", "en": "Coffee break" },
+      "public": true
+    },
+    {
+      "start": "12:30",
+      "end": "13:20",
+      "venue": "tent",
+      "title": { "ro": "A doua rundă de jurizare", "en": "Second judging round" },
+      "public": true
+    },
+    {
+      "start": "13:20",
+      "end": "13:55",
+      "venue": "tent",
+      "title": { "ro": "Calcularea punctajelor", "en": "Score calculation" },
+      "public": false
+    },
+    {
+      "start": "14:00",
+      "end": "15:00",
+      "venue": "aula",
+      "title": {
+        "ro": "Anunțarea câștigătorilor și ceremonia de închidere",
+        "en": "Winner announcement and closing ceremony"
+      },
+      "public": true
+    }
+  ]
+}

@@ -8,17 +8,19 @@ import { setDialogVisibility } from '../store/reducers/dialog-visible-slice'
 import mobileDrawerClose from '../assets/mobile-drawer-close.svg'
 
 type MobileDrawerProps = {
-  links: { title: string; to?: string }[]
+  links: { title: string; to?: string; href?: string }[]
   drawerOpened: boolean
   closeDrawer: () => void
   drawerRef: React.RefObject<HTMLDivElement>
+  isRubeGoldberg?: boolean
 }
 
 const MobileDrawer = ({
   links,
   drawerOpened,
   closeDrawer,
-  drawerRef
+  drawerRef,
+  isRubeGoldberg = false
 }: MobileDrawerProps) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
@@ -57,7 +59,7 @@ const MobileDrawer = ({
   return (
     <div
       ref={drawerRef}
-      className={`w-screen h-[100dvh] bg-black text-white text-center flex sm:hidden flex-col fixed right-0 top-0 z-40`}
+      className={`w-screen h-[100dvh] ${isRubeGoldberg ? 'bg-[#0a2f50]' : 'bg-black'} text-white text-center flex sm:hidden flex-col fixed right-0 top-0 z-40`}
       // style={{ transform: `translateY(-${window.innerHeight}px)` }}
       style={{ transform: `translateY(-100dvh)` }}
     >
@@ -69,12 +71,26 @@ const MobileDrawer = ({
       />
 
       <div className="h-full flex flex-col justify-center gap-4">
-        {links.map((link) => (
+        {links.map((link) => link.href ? (
+          <a
+            href={link.href}
+            key={link.title}
+            className="text-6xl font-semibold opacity-80 hover:opacity-100 transition-all"
+            onClick={closeDrawerWithAnimation}
+          >
+            {link.title}
+          </a>
+        ) : (
           <Link
             to={link.to ? link.to : '#'}
             key={link.title}
             className="text-6xl font-semibold opacity-80 hover:opacity-100 transition-all"
-            onClick={() => dispatch(setDialogVisibility())}
+            onClick={() => {
+              // Real routes close the drawer and navigate; the
+              // destination-less Contact link opens the contact dialog.
+              if (link.to) closeDrawerWithAnimation()
+              else dispatch(setDialogVisibility())
+            }}
           >
             {t(link.title)}
           </Link>

@@ -2,9 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import i18next from 'i18next'
 
 const initialState = {
-  language: localStorage.getItem('language')
-    ? localStorage.getItem('language')
-    : navigator.language.split('-')[0]
+  language: localStorage.getItem('language') ? localStorage.getItem('language') : 'ro'
 }
 
 const langaugeSlice = createSlice({

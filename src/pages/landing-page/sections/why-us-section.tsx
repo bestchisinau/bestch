@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Link } from 'react-router-dom'
 import useCursorSize from '../../../lib/use-cursor-size'
 import { useTranslation } from 'react-i18next'
 
@@ -28,21 +29,23 @@ const WhyUsSection = () => {
   }, [])
 
   const spans = [
-    { innerText: 'At Media Unbothered, we redefine the narrative.' },
     {
       innerText:
-        'Choose us for campaigns that demand attention, where every pixel carries purpose.'
+        'BEST Chișinău este o comunitate formată din studenți cu interese, idei și personalități diferite, uniți de dorința de a face lucruri care ne plac și de a le face împreună.'
+    },
+    {
+      innerText: 'Organizăm evenimente, învățăm unii de la alții și ne distrăm pe parcurs.'
     },
     {
       innerText:
-        'Unleash the unbothered spirit—your journey to an unforgettable story starts here.'
+        'În timp, această experiență ajunge să însemne oameni noi, dezvoltare continuă și multe amintiri.'
     }
   ]
 
   return (
     <section ref={rootRef} className="leading-5 md:py-[110px] py-[50px]">
       <h2 className="text-white/80 md:text-xl text-base font-normal leading-normal md:mb-[37px] mb-5">
-        {t('Why us')}
+        {t('Cine suntem noi?')}
       </h2>
 
       <p
@@ -50,9 +53,24 @@ const WhyUsSection = () => {
         onMouseOver={() => setCursorSize(80)}
         onMouseLeave={() => setCursorSize(40)}
       >
-        {spans.map((span) => (
+        {spans.map((span, index) => (
           <span key={span.innerText} id="span" className="opacity-10">
             {t(span.innerText)}{' '}
+            {index === spans.length - 1 && (
+              <Link
+                to="/about-us"
+                className="group relative inline-block"
+                onMouseOver={() => setCursorSize(80)}
+                onMouseLeave={() => setCursorSize(40)}
+              >
+                {t('Află mai multe despre noi.')}
+                {/* Underline retracts to the left on hover: width shrinks until gone. */}
+                <span
+                  aria-hidden
+                  className="absolute left-0 -bottom-[8px] h-[3px] w-full bg-white origin-left scale-x-100 group-hover:scale-x-0 transition-transform duration-500 ease-out"
+                />
+              </Link>
+            )}
           </span>
         ))}
       </p>

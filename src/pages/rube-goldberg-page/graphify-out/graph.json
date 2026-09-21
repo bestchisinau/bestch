@@ -1,0 +1,45 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "index.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "index",
+      "community": 0,
+      "community_name": "index.tsx",
+      "norm_label": "index.tsx"
+    },
+    {
+      "label": "RubeGoldbergPage()",
+      "file_type": "code",
+      "source_file": "index.tsx",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "index_rubegoldbergpage",
+      "community": 0,
+      "community_name": "index.tsx",
+      "norm_label": "rubegoldbergpage()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "index.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "index",
+      "target": "index_rubegoldbergpage",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "99d65afda6920600db65e0fc0d3022afe02acab4"
+}

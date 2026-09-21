@@ -32,7 +32,7 @@ const CoverSection = () => {
           onMouseLeave={() => setCursorSize(40)}
         >
           {t(
-            "Welcome to Media Unbothered, where digital dreams become reality. At Media Unbothered, we don't just build websites; we craft digital experiences that leave an everlasting impression. In a world where the digital landscape is constantly evolving, we thrive on staying ahead of the curve, unbothered by the ordinary."
+            'De 19 ani, BEST Chișinău creează oportunități pentru studenții UTM de a învăța, de a se dezvolta și de a-și pregăti viitorul profesional. Cu peste 35 de evenimente organizate și peste 2.000 de studenți implicați, continuăm să formăm studenți pregătiți pentru cariere de succes.'
           )}
         </p>
 

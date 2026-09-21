@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import useCursorSize from '../lib/use-cursor-size'
 import { useTranslation } from 'react-i18next'
 import bestChisinau from '../assets/best-chisinau.png'
@@ -7,8 +7,10 @@ import instagram from '../assets/footer/Instagram.svg'
 import linkedin from '../assets/footer/LinkedIn.svg'
 
 const Footer = () => {
+  const { pathname } = useLocation()
   const { setCursorSize } = useCursorSize()
   const { t } = useTranslation()
+  const isRubeGoldbergPage = pathname === '/rube-goldberg'
 
   const columns = [
     {
@@ -57,7 +59,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="border-t border-white/10 mt-[80px] text-white transform-gpu">
+    <footer className={`border-t border-white/10 text-white transform-gpu ${isRubeGoldbergPage ? 'mt-0 bg-[#0a2f50]' : 'mt-[80px]'}`}>
       <div className="max-w-[1400px] mx-auto xl:px-[75px] px-[18px] pt-[60px] pb-[30px]">
         <div className="flex md:flex-row flex-col justify-between gap-[50px]">
           {/* Brand */}

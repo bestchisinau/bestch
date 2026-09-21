@@ -22,7 +22,7 @@ const ReadyToChatSection = () => {
         onMouseLeave={() => setCursorSize(40)}
       >
         {t(
-          "Eager to transform your digital aspirations into a tangible online presence? We're at your service. Whether you have a specific project in mind or are keen on exploring potential opportunities, the Media Unbothered team is prepared for a meaningful discussion."
+          'Dorești să contribui la dezvoltarea comunității studențești din Republica Moldova? Contactează-ne și descoperă cum te poți implica în proiecte care creează oportunități, dezvoltă studenți și aduc oamenii împreună.'
         )}
       </p>
 

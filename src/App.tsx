@@ -1,22 +1,24 @@
-import { useEffect, useState, useRef, useCallback } from "react";
-import { Routes, Route } from "react-router-dom";
-import i18next from "i18next";
-import gsap from "gsap";
+import { useEffect, useState, useRef, useCallback } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import i18next from 'i18next'
+import gsap from 'gsap'
 
-import Header from "./components/header";
-import Footer from "./components/footer";
-import LoadingScreen from "./components/loading-screen";
-import LandingPage from "./pages/landing-page";
-import WebDevelopmentPage from "./pages/web-development-page";
-import WebDesignPage from "./pages/web-design-page";
-import SeoPage from "./pages/seo-page";
-import MaintenanceAndSupportPage from "./pages/maintenance-page";
-import PrivacyPolicyPage from "./pages/privacy-policy-page";
-import RcPage from "./pages/rc-page";
-import CmsRouter from "./pages/cms-page";
-import InteractiveCursorGSAP from "./components/interactive-cursor-gsap";
-import Dialog from "./components/dialog";
-import { fetchCmsPages } from "./lib/cms";
+import Header from './components/header'
+import Footer from './components/footer'
+import LoadingScreen from './components/loading-screen'
+import LandingPage from './pages/landing-page'
+import AboutUsPage from './pages/about-us-page'
+import RubeGoldbergPage from './pages/rube-goldberg-page'
+import WebDevelopmentPage from './pages/web-development-page'
+import WebDesignPage from './pages/web-design-page'
+import SeoPage from './pages/seo-page'
+import MaintenanceAndSupportPage from './pages/maintenance-page'
+import PrivacyPolicyPage from './pages/privacy-policy-page'
+import RcPage from './pages/rc-page'
+import CmsRouter from './pages/cms-page'
+import InteractiveCursorGSAP from './components/interactive-cursor-gsap'
+import Dialog from './components/dialog'
+import { fetchCmsPages } from './lib/cms'
 
 /**
  * @todo: Use the CoverSection as a component.
@@ -24,10 +26,13 @@ import { fetchCmsPages } from "./lib/cms";
  */
 
 const App = () => {
-  const [cmsReady, setCmsReady] = useState(false);
-  const [zoomDone, setZoomDone] = useState(false);
-  const [introDone, setIntroDone] = useState(false);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const { pathname } = useLocation()
+  const isHomePage = pathname === '/'
+  const isRubeGoldbergPage = pathname === '/rube-goldberg'
+  const [cmsReady, setCmsReady] = useState(false)
+  const [zoomDone, setZoomDone] = useState(false)
+  const [introDone, setIntroDone] = useState(false)
+  const contentRef = useRef<HTMLDivElement | null>(null)
 
   // Stable identities so the LoadingScreen timeline effect is not restarted
   // on unrelated re-renders.
@@ -35,16 +40,16 @@ const App = () => {
   const handleIntroComplete = useCallback(() => setIntroDone(true), []);
 
   useEffect(() => {
-    const storedLanguage = localStorage.getItem("language");
-    const language = storedLanguage
-      ? storedLanguage
-      : navigator.language.split("-")[0];
+    const storedLanguage = localStorage.getItem('language')
+    const language = storedLanguage ? storedLanguage : 'ro'
 
     if (language) i18next.changeLanguage(language);
   }, []);
 
   useEffect(() => {
-    let active = true;
+    if (!isHomePage || introDone) return
+
+    let active = true
 
     // fetchCmsPages never rejects (it resolves to [] on failure), so the
     // loading screen is guaranteed to disappear.
@@ -53,13 +58,13 @@ const App = () => {
     });
 
     return () => {
-      active = false;
-    };
-  }, []);
+      active = false
+    }
+  }, [introDone, isHomePage])
 
   // Fade the page in once the logo zoom has finished.
   useEffect(() => {
-    if (!zoomDone || !contentRef.current) return;
+    if (!isHomePage || !zoomDone || !contentRef.current) return
 
     const tween = gsap.to(contentRef.current, {
       opacity: 1,
@@ -68,27 +73,31 @@ const App = () => {
     });
 
     return () => {
-      tween.kill();
-    };
-  }, [zoomDone]);
+      tween.kill()
+    }
+  }, [isHomePage, zoomDone])
+
+  const contentReady = !isHomePage || cmsReady || introDone
 
   return (
     <>
-      {!introDone && (
+      {isHomePage && !introDone && (
         <LoadingScreen
           ready={cmsReady}
           onZoomComplete={handleZoomComplete}
           onComplete={handleIntroComplete}
         />
       )}
-      {cmsReady && (
-        <div ref={contentRef} className="opacity-0">
+      {contentReady && (
+        <div ref={contentRef} className={isHomePage && !zoomDone ? 'opacity-0' : ''}>
           <Header />
           <main>
-            <InteractiveCursorGSAP />
+            {!isRubeGoldbergPage && <InteractiveCursorGSAP />}
             <Dialog />
             <Routes>
               <Route path="/" element={<LandingPage />} />
+              <Route path="about-us" element={<AboutUsPage />} />
+              <Route path="rube-goldberg" element={<RubeGoldbergPage />} />
               <Route path="web-development" element={<WebDevelopmentPage />} />
               <Route path="web-design" element={<WebDesignPage />} />
               <Route
