@@ -12,7 +12,7 @@ const ProgrammeSection = () => {
     <section id="program" className="rg-field rg-field--yellow rg-programme" aria-labelledby="rg-programme-heading">
       <div className="rg-grid">
         <Wipe className="rg-programme__title">
-          <h2 id="rg-programme-heading" className="rg-display">30.10<br />10:00–14:00</h2>
+          <h2 id="rg-programme-heading" className="rg-display">30.10<br />10:00–15:15</h2>
         </Wipe>
         <div className="rg-programme__info">
           <DrawRule />

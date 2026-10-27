@@ -17,8 +17,8 @@ test('publishes the October 30 programme with the venue handoff', () => {
       { start: '10:55', end: '12:15', venue: 'tent' },
       { start: '12:15', end: '12:30', venue: 'tent' },
       { start: '12:30', end: '13:20', venue: 'tent' },
-      { start: '13:20', end: '13:55', venue: 'tent' },
-      { start: '14:00', end: '15:00', venue: 'aula' }
+      { start: '13:20', end: '13:40', venue: 'tent' },
+      { start: '14:15', end: '15:15', venue: 'aula' }
     ]
   )
 })

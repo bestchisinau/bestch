@@ -1,8 +1,10 @@
-import CoverSection from "./sections/cover-section";
-import WhyUsSection from "./sections/why-us-section";
-import OurServicesSection from "./sections/our-services-section";
-import BoardSection from "./sections/board-section";
-import ReadyToChatSection from "./sections/ready-to-chat-section";
+import CoverSection from './sections/cover-section'
+import WhyUsSection from './sections/why-us-section'
+import OurServicesSection from './sections/our-services-section'
+import BoardSection from './sections/board-section'
+import ReadyToChatSection from './sections/ready-to-chat-section'
+
+// hello, this is a change!
 
 const LandingPage = () => {
   return (
@@ -19,7 +21,7 @@ const LandingPage = () => {
         <ReadyToChatSection />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

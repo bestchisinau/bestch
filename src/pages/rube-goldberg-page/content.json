@@ -37,14 +37,14 @@
     },
     {
       "start": "13:20",
-      "end": "13:55",
+      "end": "13:40",
       "venue": "tent",
       "title": { "ro": "Calcularea punctajelor", "en": "Score calculation" },
       "public": false
     },
     {
-      "start": "14:00",
-      "end": "15:00",
+      "start": "14:15",
+      "end": "15:15",
       "venue": "aula",
       "title": {
         "ro": "Anunțarea câștigătorilor și ceremonia de închidere",

@@ -5,14 +5,14 @@ import diezLogo from '../../assets/rube-goldberg/sponsors/diez.png'
 import kleverLogo from '../../assets/rube-goldberg/sponsors/klever.png'
 import utmLogo from '../../assets/rube-goldberg/sponsors/utm-logo.png'
 
-export const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Rube%20Goldberg%202026&dates=20261030T100000%2F20261030T140000&ctz=Europe%2FChisinau&location=Universitatea%20Tehnica%20a%20Moldovei%2C%20Aula%203-3&details=Jurizarea%20Rube%20Goldberg%202026%20si%20demonstratiile%20celor%209%20echipe.'
+export const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Rube%20Goldberg%202026&dates=20261030T100000%2F20261030T151500&ctz=Europe%2FChisinau&location=Universitatea%20Tehnica%20a%20Moldovei%2C%20Aula%203-3&details=Jurizarea%20Rube%20Goldberg%202026%20si%20demonstratiile%20celor%209%20echipe.'
 export const mapUrl = 'https://www.google.com/maps/search/?api=1&query=Universitatea+Tehnica+a+Moldovei+Aula+3-3+Chisinau'
 export const facebookUrl = 'https://www.facebook.com/BEST.Chisinau/'
 export const instagramUrl = 'https://www.instagram.com/best_chisinau/'
 export const linkedinUrl = 'https://www.linkedin.com/company/best-chisinau/posts/?feedView=all'
 
 export const eventDate = { iso: '2026-10-30', label: '30.10.2026' }
-export const eventTime = '10:00–14:00'
+export const eventTime = '10:00–15:15'
 
 export const labels = {
   date: { ro: 'Data', en: 'Date' },
@@ -113,7 +113,7 @@ export const faqs: { ro: Faq[]; en: Faq[] } = {
     },
     {
       question: 'Unde are loc evenimentul?',
-      answer: 'Evenimentul are loc la Universitatea Tehnică a Moldovei, Aula 3-3, pe 30 octombrie 2026, între orele 10:00 și 14:00.'
+      answer: 'Evenimentul are loc la Universitatea Tehnică a Moldovei, Aula 3-3, pe 30 octombrie 2026, între orele 10:00 și 15:15.'
     },
     {
       question: 'Este necesară înregistrarea?',
@@ -121,7 +121,7 @@ export const faqs: { ro: Faq[]; en: Faq[] } = {
     }
   ],
   en: [
-    { question: 'When is the final?', answer: 'On 30 October 2026, from 10:00 to 14:00.' },
+    { question: 'When is the final?', answer: 'On 30 October 2026, from 10:00 to 15:15.' },
     { question: 'Where does it take place?', answer: 'The event takes place at the Technical University of Moldova, Aula 3-3.' },
     { question: 'What will I see?', answer: 'Nine machine presentations, two judging rounds and the awards ceremony.' },
     { question: 'Who organises the event?', answer: 'BEST Chișinău together with the Technical University of Moldova.' }
