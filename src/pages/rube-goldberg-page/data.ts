@@ -2,6 +2,7 @@ import type { Bi } from './use-copy'
 import ambalajLogo from '../../assets/rube-goldberg/sponsors/ambalaj.png'
 import cybercorLogo from '../../assets/rube-goldberg/sponsors/cybercor.png'
 import diezLogo from '../../assets/rube-goldberg/sponsors/diez.png'
+import holcimLogo from '../../assets/rube-goldberg/sponsors/holcim.svg'
 import kleverLogo from '../../assets/rube-goldberg/sponsors/klever.png'
 import utmLogo from '../../assets/rube-goldberg/sponsors/utm-logo.png'
 
@@ -91,12 +92,14 @@ export const reasons: Reason[] = [
   }
 ]
 
-export type Sponsor = { name: string; logo: string; width: number; height: number; featured?: boolean }
+export type Sponsor = { name: string; logo: string; width: number; height: number }
 
 // Intrinsic sizes let the grid size every logo by optical area, not by height.
+// Order fills the grid row by row: three logos per row on tablet and up.
 export const sponsors: Sponsor[] = [
-  { name: 'Klever', logo: kleverLogo, width: 1317, height: 408, featured: true },
-  { name: 'Ambalaj Market', logo: ambalajLogo, width: 873, height: 206, featured: true },
+  { name: 'Klever', logo: kleverLogo, width: 1317, height: 408 },
+  { name: 'Ambalaj Market', logo: ambalajLogo, width: 873, height: 206 },
+  { name: 'Holcim', logo: holcimLogo, width: 211, height: 49 },
   { name: 'Universitatea Tehnică a Moldovei', logo: utmLogo, width: 513, height: 258 },
   { name: 'Cybercor', logo: cybercorLogo, width: 3542, height: 402 },
   { name: 'diez', logo: diezLogo, width: 1928, height: 840 }

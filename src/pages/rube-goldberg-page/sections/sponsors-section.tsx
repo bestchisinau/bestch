@@ -6,7 +6,7 @@ import type { Sponsor } from '../data'
 
 // Aspect ratios run from 2:1 to almost 9:1, so a shared height would make the
 // widest logo four times the size of the squarest. Equal area reads as equal.
-const logoWidth = ({ width, height, featured }: Sponsor) => Math.round(Math.sqrt((featured ? 9500 : 6000) * (width / height)))
+const logoWidth = ({ width, height }: Sponsor) => Math.round(Math.sqrt(6000 * (width / height)))
 
 const SponsorsSection = () => {
   const { copy } = useCopy()
@@ -17,7 +17,7 @@ const SponsorsSection = () => {
         <RailHeading id="rg-sponsors-heading" title={copy('CONSTRUIT ÎMPREUNĂ.', 'BUILT TOGETHER.')} />
         <Fade as="ul" className="rg-sponsors__grid" tall>
           {sponsors.map((sponsor) => (
-            <li className={sponsor.featured ? 'rg-sponsor rg-sponsor--featured' : 'rg-sponsor'} key={sponsor.name}>
+            <li className="rg-sponsor" key={sponsor.name}>
               <figure>
                 <div className="rg-sponsor__cell">
                   <img
