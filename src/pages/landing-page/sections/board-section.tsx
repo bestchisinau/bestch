@@ -1,28 +1,32 @@
 import { useTranslation } from 'react-i18next'
 import useCursorSize from '../../../lib/use-cursor-size'
-import placeholder from '../../../assets/board/placeholder.svg'
+import presImage from '../../../assets/board/pres.jpg'
+import secretaryImage from '../../../assets/board/secre.jpg'
+import vpCompaniesImage from '../../../assets/board/vp-cr.jpg'
+import vpPublicRelationsImage from '../../../assets/board/vp-pr.jpg'
+import vpHumanResourcesImage from '../../../assets/board/vp-hr.jpg'
 
 const BoardSection = () => {
   const { setCursorSize } = useCursorSize()
   const { t } = useTranslation()
 
   const members = [
-    { name: 'Nume Prenume', role: 'Președinte', image: placeholder },
-    { name: 'Nume Prenume', role: 'Secretar', image: placeholder },
+    { name: 'Gabriela Bîtca', role: 'Președinte', image: presImage },
+    { name: 'Alexandru Chirica', role: 'Secretar', image: secretaryImage },
     {
-      name: 'Nume Prenume',
+      name: 'Alexandru Avram',
       role: 'VP Relații cu Companiile',
-      image: placeholder
+      image: vpCompaniesImage
     },
     {
-      name: 'Nume Prenume',
+      name: 'Daniela Cebotari',
       role: 'VP Relații Publice',
-      image: placeholder
+      image: vpPublicRelationsImage
     },
     {
-      name: 'Nume Prenume',
+      name: 'Valeria Clachei',
       role: 'VP Resurse Umane',
-      image: placeholder
+      image: vpHumanResourcesImage
     }
   ]
 
@@ -42,8 +46,8 @@ const BoardSection = () => {
           >
             <img
               src={member.image}
-              alt={t(member.role)}
-              className="w-full aspect-square object-cover rounded-2xl bg-white/5 grayscale group-hover:grayscale-0 transition-all"
+              alt={t(member.name)}
+              className="w-full aspect-square object-cover rounded-2xl bg-white/5 transition-all"
               loading="lazy"
             />
             <h3 className="mt-4 md:text-[20px] text-[16px] font-medium leading-tight">
